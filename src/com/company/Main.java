@@ -11,8 +11,7 @@ public class Main {
         for(int i = 0; i < array.length ; i++){
             array[i] = random.nextInt(50);
         }
-        Work work = new Work(array);
-        work.func1();
-        work.func2();
+        Matrix matrix = new Matrix("text.txt");
+        matrix.func2();
     }
 }
