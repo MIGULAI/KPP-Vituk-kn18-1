@@ -11,7 +11,12 @@ public class Main {
         for(int i = 0; i < array.length ; i++){
             array[i] = random.nextInt(50);
         }
+
+        /*
         Matrix matrix = new Matrix("text.txt");
-        matrix.func2();
+        matrix.func2();*/
+
+        MathTask mathTask = new MathTask("mathTask.txt");
+        mathTask.func1(array);
     }
 }
