@@ -12,11 +12,11 @@ public class Main {
             array[i] = random.nextInt(50);
         }
 
-        /*
-        Matrix matrix = new Matrix("text.txt");
-        matrix.func2();*/
 
-        MathTask mathTask = new MathTask("mathTask.txt");
-        mathTask.func1(array);
+        Matrix matrix = new Matrix("text.txt");
+        matrix.func2();
+
+        /*MathTask mathTask = new MathTask("mathTask.txt");
+        mathTask.func1(array);*/
     }
 }
