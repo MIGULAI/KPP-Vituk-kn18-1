@@ -1,1 +1,0 @@
-# KPP-Vituk-kn18-1
