@@ -7,10 +7,10 @@ import java.util.regex.Pattern;
 public class Main {
 
     public static void main(String[] args) {
-        /*boolean status = myGUID("c35f06d9-2d88-44da-84c8-02af38fe93c9");
-        System.out.println("Status code is :\t" +status);*/
+        boolean status = myGUID("c35f06d9-2d88-44da-84c8-02af38fe93c9");
+        System.out.println("Status code is :\t" +status);
 
-        func("24 41 -50 89 43 12 -56 -21 68 -99");
+        func("24 41 -50 89 46 12 -56 -21 68 -99 54");
     }
 
     public static boolean myGUID(String code){
@@ -24,12 +24,12 @@ public class Main {
     }
 
     public static void func(String numbers){
-        Scanner input = new Scanner(numbers);
-        int[] _array = new int[10];
+        String[] _split = numbers.split(" ");
+        int[] _array = new int[_split.length];
         int pair = 0;
         int nPair = 0;
         for(int i = 0; i< _array.length; i++){
-                _array[i] = input.nextInt();
+                _array[i] = Integer.parseInt(_split[i]);
                 if(_array[i]%2 == 0){
                     pair+=1;
                 }else{
