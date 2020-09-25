@@ -1,8 +1,41 @@
 package com.company;
 
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+        /*boolean status = myGUID("c35f06d9-2d88-44da-84c8-02af38fe93c9");
+        System.out.println("Status code is :\t" +status);*/
+
+        func("24 41 -50 89 43 12 -56 -21 68 -99");
+    }
+
+    public static boolean myGUID(String code){
+        Pattern p =  Pattern.compile("^\\{?\\p{XDigit}{8}-(?:\\p{XDigit}{4}-){3}\\p{XDigit}{12}}?$");
+        Matcher m = p.matcher(code);
+        if(m.matches()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public static void func(String numbers){
+        Scanner input = new Scanner(numbers);
+        int[] _array = new int[10];
+        int pair = 0;
+        int nPair = 0;
+        for(int i = 0; i< _array.length; i++){
+                _array[i] = input.nextInt();
+                if(_array[i]%2 == 0){
+                    pair+=1;
+                }else{
+                    nPair+=1;
+                }
+        }
+        System.out.println(pair + "   " + nPair);
     }
 }
