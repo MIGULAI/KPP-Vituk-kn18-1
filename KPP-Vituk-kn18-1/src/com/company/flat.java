@@ -11,7 +11,7 @@ public class flat {
 
     private static String _address;
     private static int _rooms;
-    private double _price;
+    private int _price;
     private boolean _status;
     private String _dateRented;
     private String _timeRented;
@@ -26,7 +26,7 @@ public class flat {
         _rooms = rooms;
         _status = false;
     }
-    flat(String address, int rooms, double prise){
+    flat(String address, int rooms, int prise){
         _price = prise;
         _address = address;
         _rooms = rooms;
@@ -36,7 +36,7 @@ public class flat {
     public static void SetRooms(int rooms){
         _rooms = rooms;
     }
-    public void SetPrice(double price){
+    public void SetPrice(int price){
         _price = price;
     }
     public void SetStatus(boolean status){
@@ -53,10 +53,10 @@ public class flat {
     }
 
 
-    public static String ReadAddress(){
+    public String ReadAddress(){
         return _address;
     }
-    public static int RoomsNumber(){
+    public int RoomsNumber(){
         return _rooms;
     }
     public double ReadPrice(){
