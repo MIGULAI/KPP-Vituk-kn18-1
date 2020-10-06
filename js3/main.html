@@ -1,17 +1,20 @@
 <html>
     <head>
         <script type="text/javascript" src="main.js"></script>
+        <script type="text/javascript" src="price.json"></script>
         <!--Розробіть дві веб-сторінки мовою HTML торговельного підприємства та автора.
 Перша веб-сторінка має містити інформацію про підприємство (назву, адресу, телефони
 офісу, час роботи) та прайс-листок підприємства. На другій веб-сторінці подайте відомості
 про розробника. Діяльність підприємства – торгівля книгами.-->
             <style>
                 footer{
-                    display: none;
+                    visibility: collapse;
                 }
                 #mainTable{
-                    
-                    display: none;
+                    visibility: collapse;
+                }
+                table, tr, td {
+                    border: 1px solid black;
                 }
             </style>
     </head>
@@ -20,10 +23,10 @@
             <div id="addBut" onclick="AddTable()">Здесь находится прайс со всеми ценами</div>
             <div id="mainTable">
                 <table id="isTable">
-                    <td>
-                        <tr>Товар</tr>
-                        <tr>Цена</tr>
-                    </td>
+                    <tr>
+                        <td>Товар</td>
+                        <td>Цена</td>
+                    </tr>
                 </table>
             </div>
         </div>
