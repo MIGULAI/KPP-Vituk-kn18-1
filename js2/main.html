@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="main.js"></script>
+        <style>
+            table{
+                border-collapse: collapse;
+            }
+            table, tr , td {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="one">
+            <input id="firstText" placeholder="First" type="text"/>
+            <input id="secondText" placeholder="Second" type="text"/>
+        </div>
+        <div class="two">
+            <input onclick="first()" class="firstBut" value="Add" type="button">
+            <input onclick="second()" class="deletBut" value="Delete" type="button">
+        </div>
+        <table id="table">
+            <tr>
+                <td>First</td>
+                <td>Second</td>
+            </tr>
+        </table>
+    </body>
+</html>
