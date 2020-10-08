@@ -1,8 +1,9 @@
 package com.company;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class flat {
+public class flat implements Serializable {
     /*Предметна область: оренда житла, клас: помешкання, орієнтовний перелік полів:
     адреса, кількість кімнат, вартість оренди, помешкання орендовано (так/ні), дата оренди,
     термін оренди. Вивести окремо список вільних та окремо список орендованих
@@ -74,4 +75,6 @@ public class flat {
     public ArrayList<String> ReadComments(){
         return comments;
     }
+
+
 }
