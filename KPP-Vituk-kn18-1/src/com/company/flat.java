@@ -1,5 +1,6 @@
 package com.company;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class flat {
@@ -13,8 +14,8 @@ public class flat {
     private static int _rooms;
     private int _price;
     private boolean _status;
-    private String _dateRented;
-    private String _timeRented;
+    private LocalDate _dateRented;
+    private LocalDate _timeRented;
     private ArrayList<String> comments = new ArrayList<String>();
 
     flat(String address){
@@ -42,10 +43,10 @@ public class flat {
     public void SetStatus(boolean status){
         _status = status;
     }
-    public void SetDateRented(String date){
+    public void SetDateRented(LocalDate date){
         _dateRented = date;
     }
-    public void SetTimeRented(String time){
+    public void SetTimeRented(LocalDate time){
         _timeRented = time;
     }
     public void AddComment(String comment){
@@ -65,10 +66,10 @@ public class flat {
     public boolean ReadStatus(){
         return _status;
     }
-    public String ReaderDateRentead(){
+    public LocalDate ReaderDateRentead(){
         return _dateRented;
     }
-    public String ReadTimeRented(){
+    public LocalDate ReadTimeRented(){
         return _timeRented;
     }
     public ArrayList<String> ReadComments(){
