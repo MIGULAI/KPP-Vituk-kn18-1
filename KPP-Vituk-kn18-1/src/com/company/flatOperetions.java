@@ -79,14 +79,14 @@ public class flatOperetions {
     public void loadFromFile(String fileName) {
         File file = new File(fileName);
 
-        ObjectInputStream is = null;
         ArrayList<flat> flatsFromFile = new ArrayList<flat>();
         flat newFlat = null;
 
         try {
             FileInputStream fi = new FileInputStream(file);
-            is = new ObjectInputStream(fi);
+            ObjectInputStream is = new ObjectInputStream(fi);
             if (is != null) {
+                _flats.clear();
                 while (true) {
                     newFlat = (flat) is.readObject();
                     if (newFlat != null)

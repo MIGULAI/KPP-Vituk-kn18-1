@@ -3,7 +3,7 @@ package com.company;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class flat implements Serializable {
+public class flat implements Serializable , Comparable {
     /*Предметна область: оренда житла, клас: помешкання, орієнтовний перелік полів:
     адреса, кількість кімнат, вартість оренди, помешкання орендовано (так/ні), дата оренди,
     термін оренди. Вивести окремо список вільних та окремо список орендованих
@@ -76,5 +76,9 @@ public class flat implements Serializable {
         return comments;
     }
 
-
+    @Override
+    public int compareTo(flat o) {
+        int result = (int) (_price - o.ReadPrice());
+        return result;
+    }
 }
