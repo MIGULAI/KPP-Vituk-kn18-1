@@ -10,8 +10,8 @@ public class flat {
     помешкань. Реалізувати пошук вільних помешкань з вказаною кількістю кімнат та
     допустимою вартістю оренди.*/
 
-    private static String _address;
-    private static int _rooms;
+    private String _address;
+    private int _rooms;
     private int _price;
     private boolean _status;
     private LocalDate _dateRented;
@@ -24,8 +24,8 @@ public class flat {
     }
     flat(String address, int rooms){
         _address = address;
-        _rooms = rooms;
         _status = false;
+        _rooms = rooms;
     }
     flat(String address, int rooms, int prise){
         _price = prise;
@@ -34,7 +34,7 @@ public class flat {
         _status = false;
     }
 
-    public static void SetRooms(int rooms){
+    public void SetRooms(int rooms){
         _rooms = rooms;
     }
     public void SetPrice(int price){

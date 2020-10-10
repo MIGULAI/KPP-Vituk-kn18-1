@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 public class flatOperetions implements Collection {
-    private ArrayList<flat> _flats;
+    private final ArrayList<flat> _flats;
     flatOperetions(){
         _flats = new ArrayList<flat>();
     }
@@ -23,7 +23,9 @@ public class flatOperetions implements Collection {
         }
         return  sorted;
     }
-
+    public flat byIndex(int i){
+        return _flats.get(i);
+    }
     public ArrayList<flat> SortNumberRoomsFlat(int number){
         ArrayList<flat> sorted = new ArrayList<flat>();
         for (int i = 0 ; i < _flats.size();i++){
