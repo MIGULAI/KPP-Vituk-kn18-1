@@ -1,0 +1,246 @@
+Index: src/com/company/flatOperetions.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.company;\r\n\r\nimport java.util.ArrayList;\r\n\r\npublic class flatOperetions {\r\n    private static ArrayList<flat> _flats;\r\n\r\n\r\n    flatOperetions(ArrayList<flat> flats){\r\n        _flats = flats;\r\n    }\r\n\r\n    public ArrayList<flat> SortTrueStatusFlats(){\r\n        ArrayList<flat> sorted = new ArrayList<flat>();\r\n        for (int i = 0 ; i < _flats.size();i++){\r\n            if(_flats.get(i).ReadStatus() == true) sorted.add(_flats.get(i));\r\n        }\r\n        return  sorted;\r\n    }\r\n    public ArrayList<flat> SortFalseStatusFlats(){\r\n        ArrayList<flat> sorted = new ArrayList<flat>();\r\n        for (int i = 0 ; i < _flats.size();i++){\r\n            if(_flats.get(i).ReadStatus() == false) sorted.add(_flats.get(i));;\r\n        }\r\n        return  sorted;\r\n    }\r\n\r\n    public ArrayList<flat> SortNumberRoomsFlat(int number){\r\n        ArrayList<flat> sorted = new ArrayList<flat>();\r\n        for (int i = 0 ; i < _flats.size();i++){\r\n            if(_flats.get(i).RoomsNumber() == number) sorted.add(_flats.get(i));\r\n        }\r\n        return  sorted;\r\n    }\r\n    public ArrayList<flat> SortOnePrice(int price){\r\n        ArrayList<flat> sorted = new ArrayList<flat>();\r\n        for (int i = 0 ; i < _flats.size();i++){\r\n            if(_flats.get(i).ReadPrice() == price) sorted.add(_flats.get(i));\r\n        }\r\n        return  sorted;\r\n    }\r\n    public ArrayList<flat> SortBeetwenPrice(int minPrice , int maxPrice){\r\n        ArrayList<flat> sorted = new ArrayList<flat>();\r\n        for (int i = 0 ; i < _flats.size();i++){\r\n            if(_flats.get(i).ReadPrice() >= minPrice &&_flats.get(i).ReadPrice() <= maxPrice) sorted.add(_flats.get(i));\r\n        }\r\n        return  sorted;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/company/flatOperetions.java	(revision f37fe2cc76f810869b72da7a3cf0c37da110b438)
++++ src/com/company/flatOperetions.java	(date 1602257266282)
+@@ -1,15 +1,17 @@
+ package com.company;
+ 
+ import java.util.ArrayList;
+-
+-public class flatOperetions {
+-    private static ArrayList<flat> _flats;
+-
++import java.util.Collection;
++import java.util.Iterator;
+ 
+-    flatOperetions(ArrayList<flat> flats){
+-        _flats = flats;
++public class flatOperetions implements Collection {
++    private ArrayList<flat> _flats;
++    flatOperetions(){
++        _flats = new ArrayList<flat>();
+     }
+-
++    public flat byIndex(int i){
++        return _flats.get(i);
++    }
+     public ArrayList<flat> SortTrueStatusFlats(){
+         ArrayList<flat> sorted = new ArrayList<flat>();
+         for (int i = 0 ; i < _flats.size();i++){
+@@ -46,4 +48,86 @@
+         }
+         return  sorted;
+     }
+-}
++
++    @Override
++    public int size() {
++        return _flats.size();
++    }
++
++    @Override
++    public boolean isEmpty() {
++        return _flats.isEmpty();
++    }
++
++    @Override
++    public boolean contains(Object o) {
++        return _flats.contains(o);
++    }
++
++    @Override
++    public Iterator iterator() {
++        return _flats.iterator();
++    }
++
++    @Override
++    public Object[] toArray() {
++        return _flats.toArray();
++    }
++
++    @Override
++    public boolean add(Object o) {
++        _flats.add((flat) o);
++        return true;
++    }
++
++    @Override
++    public boolean remove(Object o) {
++        _flats.remove((flat) o);
++        return false;
++    }
++
++    @Override
++    public boolean addAll(Collection c) {
++        _flats.addAll(c);
++        return true;
++    }
++
++    @Override
++    public void clear() {
++        _flats.clear();
++    }
++
++    @Override
++    public boolean equals(Object o) {
++        _flats.equals(o);
++        return true;
++    }
++
++    @Override
++    public int hashCode() {
++        return _flats.hashCode();
++    }
++
++    @Override
++    public boolean retainAll(Collection c) {
++        _flats.retainAll(c);
++        return true;
++    }
++
++    @Override
++    public boolean removeAll(Collection c) {
++        _flats.retainAll(c);
++        return true;
++    }
++
++    @Override
++    public boolean containsAll(Collection c) {
++        _flats.containsAll(c);
++        return true;
++    }
++
++    @Override
++    public Object[] toArray(Object[] a) {
++        return _flats.toArray(a);
++    }
++}
+\ No newline at end of file
+Index: src/com/company/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.company;\r\n\r\nimport java.util.ArrayList;\r\n\r\npublic class Main {\r\n\r\n    public static void main(String[] args) {\r\n        ArrayList<flat> flats = new ArrayList<flat>();\r\n        flat first = new flat(\"Nourvukaike\",2 , 4300);\r\n        first.SetStatus(true);\r\n        flats.add(first);\r\n        flat second = new flat(\"Tama\");\r\n        second.SetStatus(false);\r\n        flats.add(second);\r\n        flat third = new flat(\"Amarr\");\r\n        third.SetStatus(true);\r\n        flats.add(third);\r\n        flatOperetions ops = new flatOperetions(flats);\r\n        ArrayList<flat> result = ops.SortTrueStatusFlats();\r\n        result = ops.SortFalseStatusFlats();\r\n        result = ops.SortNumberRoomsFlat(2);\r\n        result = ops.SortOnePrice(4300);\r\n        result = ops.SortBeetwenPrice(1000,5000);\r\n        System.out.println(\"fdsdffd\");\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/company/Main.java	(revision f37fe2cc76f810869b72da7a3cf0c37da110b438)
++++ src/com/company/Main.java	(date 1602257536890)
+@@ -5,22 +5,24 @@
+ public class Main {
+ 
+     public static void main(String[] args) {
+-        ArrayList<flat> flats = new ArrayList<flat>();
++        flatOperetions ops = new flatOperetions();
+         flat first = new flat("Nourvukaike",2 , 4300);
+         first.SetStatus(true);
+-        flats.add(first);
++        ops.add(first);
++
+         flat second = new flat("Tama");
+         second.SetStatus(false);
+-        flats.add(second);
++        ops.add(second);
++        System.out.println(ops.byIndex(1).ReadAddress());
+         flat third = new flat("Amarr");
+         third.SetStatus(true);
+-        flats.add(third);
+-        flatOperetions ops = new flatOperetions(flats);
++        ops.add(third);
++
+         ArrayList<flat> result = ops.SortTrueStatusFlats();
+         result = ops.SortFalseStatusFlats();
+         result = ops.SortNumberRoomsFlat(2);
+         result = ops.SortOnePrice(4300);
+         result = ops.SortBeetwenPrice(1000,5000);
+-        System.out.println("fdsdffd");
++        System.out.println(ops.byIndex(2).ReadAddress());
+     }
+ }
+Index: src/com/company/flat.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.company;\r\n\r\nimport java.util.ArrayList;\r\n\r\npublic class flat {\r\n    /*Предметна область: оренда житла, клас: помешкання, орієнтовний перелік полів:\r\n    адреса, кількість кімнат, вартість оренди, помешкання орендовано (так/ні), дата оренди,\r\n    термін оренди. Вивести окремо список вільних та окремо список орендованих\r\n    помешкань. Реалізувати пошук вільних помешкань з вказаною кількістю кімнат та\r\n    допустимою вартістю оренди.*/\r\n\r\n    private static String _address;\r\n    private static int _rooms;\r\n    private int _price;\r\n    private boolean _status;\r\n    private String _dateRented;\r\n    private String _timeRented;\r\n    private ArrayList<String> comments = new ArrayList<String>();\r\n\r\n    flat(String address){\r\n        _address = address;\r\n        _status = false;\r\n    }\r\n    flat(String address, int rooms){\r\n        _address = address;\r\n        _rooms = rooms;\r\n        _status = false;\r\n    }\r\n    flat(String address, int rooms, int prise){\r\n        _price = prise;\r\n        _address = address;\r\n        _rooms = rooms;\r\n        _status = false;\r\n    }\r\n\r\n    public static void SetRooms(int rooms){\r\n        _rooms = rooms;\r\n    }\r\n    public void SetPrice(int price){\r\n        _price = price;\r\n    }\r\n    public void SetStatus(boolean status){\r\n        _status = status;\r\n    }\r\n    public void SetDateRented(String date){\r\n        _dateRented = date;\r\n    }\r\n    public void SetTimeRented(String time){\r\n        _timeRented = time;\r\n    }\r\n    public void AddComment(String comment){\r\n        comments.add(comment);\r\n    }\r\n\r\n\r\n    public String ReadAddress(){\r\n        return _address;\r\n    }\r\n    public int RoomsNumber(){\r\n        return _rooms;\r\n    }\r\n    public double ReadPrice(){\r\n        return _price;\r\n    }\r\n    public boolean ReadStatus(){\r\n        return _status;\r\n    }\r\n    public String ReaderDateRentead(){\r\n        return _dateRented;\r\n    }\r\n    public String ReadTimeRented(){\r\n        return _timeRented;\r\n    }\r\n    public ArrayList<String> ReadComments(){\r\n        return comments;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/company/flat.java	(revision f37fe2cc76f810869b72da7a3cf0c37da110b438)
++++ src/com/company/flat.java	(date 1602258344449)
+@@ -1,5 +1,6 @@
+ package com.company;
+ 
++import java.time.LocalDate;
+ import java.util.ArrayList;
+ 
+ public class flat {
+@@ -9,12 +10,12 @@
+     помешкань. Реалізувати пошук вільних помешкань з вказаною кількістю кімнат та
+     допустимою вартістю оренди.*/
+ 
+-    private static String _address;
+-    private static int _rooms;
++    private String _address;
++    private int _rooms;
+     private int _price;
+     private boolean _status;
+-    private String _dateRented;
+-    private String _timeRented;
++    private LocalDate _dateRented;
++    private LocalDate _timeRented;
+     private ArrayList<String> comments = new ArrayList<String>();
+ 
+     flat(String address){
+@@ -23,8 +24,8 @@
+     }
+     flat(String address, int rooms){
+         _address = address;
+-        _rooms = rooms;
+         _status = false;
++        _rooms = rooms;
+     }
+     flat(String address, int rooms, int prise){
+         _price = prise;
+@@ -33,7 +34,7 @@
+         _status = false;
+     }
+ 
+-    public static void SetRooms(int rooms){
++    public void SetRooms(int rooms){
+         _rooms = rooms;
+     }
+     public void SetPrice(int price){
+@@ -42,10 +43,10 @@
+     public void SetStatus(boolean status){
+         _status = status;
+     }
+-    public void SetDateRented(String date){
++    public void SetDateRented(LocalDate date){
+         _dateRented = date;
+     }
+-    public void SetTimeRented(String time){
++    public void SetTimeRented(LocalDate time){
+         _timeRented = time;
+     }
+     public void AddComment(String comment){
+@@ -65,13 +66,13 @@
+     public boolean ReadStatus(){
+         return _status;
+     }
+-    public String ReaderDateRentead(){
++    public LocalDate ReaderDateRentead(){
+         return _dateRented;
+     }
+-    public String ReadTimeRented(){
++    public LocalDate ReadTimeRented(){
+         return _timeRented;
+     }
+     public ArrayList<String> ReadComments(){
+         return comments;
+     }
+-}
++}
+\ No newline at end of file
