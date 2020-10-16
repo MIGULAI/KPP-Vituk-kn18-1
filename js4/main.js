@@ -8,6 +8,7 @@ function Add(){
     newSubnode2.type = "checkbox";
     newSubnode2.addEventListener("click" , function(){
         newSubnode2.parentNode.parentNode.removeChild(newSubnode2.parentNode);
+        deleteFromData(newDeal);
     })
 
     newStrin.id = "strin";
@@ -32,6 +33,7 @@ function AddAll(a){
     newSubnode2.type = "checkbox";
     newSubnode2.addEventListener("click" , function(){
         newSubnode2.parentNode.parentNode.removeChild(newSubnode2.parentNode);
+        deleteFromData(a);
     })
 
     newStrin.id = "strin";
@@ -46,18 +48,33 @@ function AddAll(a){
 }
 
 function saveToStorage(newDeal){
-    let element = JSON.parse(localStorage.getItem("one"));
+    let element = [];
+    element = Array.from(JSON.parse(localStorage.getItem("one")));
     element.push(newDeal);
     var serial = JSON.stringify(element);
     localStorage.setItem("one",serial);
 }
 
+function deleteFromData(a){
+    let element = Array.from(JSON.parse(localStorage.getItem("one")));
+    let index = element.indexOf(a);
+    element.splice(index , 1);
+    var serial = JSON.stringify(element);
+    localStorage.setItem("one",serial);
+}
 
 
 function init(){
     let element = [];
-    element = JSON.parse(localStorage.getItem("one"));
-    for(let i = 0 ; i < element.length ; i++){
-        AddAll(element[i]);
+    if(localStorage.getItem("one") !== null){
+        element = Array.from(JSON.parse(localStorage.getItem("one")));
+        for(let i = 0 ; i < element.length ; i++){
+            AddAll(element[i]);
+        }
+    }else{
+        let newItem = JSON.stringify(["доьавь сюда что либо!!!!"]);
+        localStorage.setItem("one",newItem);
+        init();
     }
+    
 }
