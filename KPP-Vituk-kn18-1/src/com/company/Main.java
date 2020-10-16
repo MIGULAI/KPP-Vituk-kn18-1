@@ -15,7 +15,7 @@ public class Main {
         flat third = new flat("Amarr");
         third.SetStatus(true);
         flats.add(third);
-        flatOperetions ops = new flatOperetions(flats);
+        flatOperetions ops = new flatOperetions();
 
         
         ArrayList<flat> result = ops.SortTrueStatusFlats();

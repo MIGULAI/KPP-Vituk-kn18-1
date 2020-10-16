@@ -62,7 +62,7 @@ public class flatOperetions implements Collection {
     public boolean contains(Object o) {
         return _flats.contains(o);
     }
-
+///*
     @Override
     public Iterator iterator() {
         return _flats.iterator();
