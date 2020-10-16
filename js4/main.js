@@ -1,5 +1,3 @@
-let element = [];
-
 function Add(){
     let newDeal = document.getElementById("add").value;
     let table = document.getElementById("table");
@@ -48,12 +46,16 @@ function AddAll(a){
 }
 
 function saveToStorage(newDeal){
+    let element = JSON.parse(localStorage.getItem("one"));
     element.push(newDeal);
     var serial = JSON.stringify(element);
     localStorage.setItem("one",serial);
 }
 
+
+
 function init(){
+    let element = [];
     element = JSON.parse(localStorage.getItem("one"));
     for(let i = 0 ; i < element.length ; i++){
         AddAll(element[i]);
